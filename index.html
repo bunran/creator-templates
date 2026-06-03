@@ -26,9 +26,40 @@ body {
   padding-bottom: 40px;
 }
 
+/* ── SITE NAV ── */
+.site-nav {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: #0A0A0A;
+}
+
+.site-nav a {
+  flex: 1;
+  padding: 12px 8px;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gray);
+  border-bottom: 2px solid transparent;
+  transition: all .2s;
+}
+
+.site-nav a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.site-nav a:not(.active):hover {
+  color: var(--white);
+}
+
 /* ── HEADER ── */
 header {
-  padding: 28px 20px 20px;
+  padding: 24px 20px 18px;
   text-align: center;
   border-bottom: 1px solid var(--border);
 }
@@ -578,6 +609,11 @@ header p {
 </style>
 </head>
 <body>
+
+<nav class="site-nav">
+  <a href="index.html" class="active">🎵 Music & Creator</a>
+  <a href="cambodia.html">🇰🇭 Cambodia</a>
+</nav>
 
 <header>
   <h1>Creator Templates</h1>

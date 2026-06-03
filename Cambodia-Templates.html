@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Cambodia Creator Templates</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg: #0A0805;
+  --card: #131008;
+  --border: #2A2215;
+  --white: #F5EFE0;
+  --gray: #8A7D65;
+  --light: #4A3F2F;
+  --gold: #D4960A;
+  --red: #C0392B;
+  --khmer: #E8A020;
+  --stone: #B8A882;
+  --deep: #1A0F05;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  padding-bottom: 48px;
+}
+
+/* ── HEADER ── */
+header {
+  padding: 28px 20px 18px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-deco {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(212,150,10,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(192,57,43,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 30px;
+  letter-spacing: 6px;
+  color: var(--white);
+  position: relative;
+}
+
+header h1 span { color: var(--khmer); }
+
+header p {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 5px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+/* ── FILTER ── */
+.filters {
+  display: flex;
+  gap: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--border);
+}
+.filters::-webkit-scrollbar { display: none; }
+
+.filter-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--gray);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all .2s;
+  flex-shrink: 0;
+}
+.filter-btn.on { background: var(--khmer); color: #000; border-color: var(--khmer); }
+
+/* ── GRID ── */
+.grid {
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform .15s;
+}
+.card:active { transform: scale(0.97); }
+
+.card-preview {
+  width: 100%;
+  aspect-ratio: 9/16;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-info {
+  padding: 11px 11px 8px;
+  flex: 1;
+}
+
+.card-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.card-meta {
+  font-size: 11px;
+  color: var(--gray);
+}
+
+.card-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: var(--border);
+  color: var(--gray);
+}
+
+.tag.culture { background: rgba(232,160,32,0.15); color: var(--khmer); }
+.tag.food { background: rgba(192,57,43,0.15); color: #E86A4A; }
+.tag.travel { background: rgba(100,180,100,0.12); color: #7DC87D; }
+.tag.history { background: rgba(150,130,200,0.12); color: #B0A0E0; }
+.tag.free { background: rgba(100,220,100,0.1); color: #6DDC6D; }
+
+.use-btn {
+  margin: 0 11px 11px;
+  padding: 10px;
+  background: var(--khmer);
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: calc(100% - 22px);
+  text-align: center;
+  transition: opacity .15s;
+}
+.use-btn:active { opacity: .8; }
+
+/* ══════════════════════════════
+   TEMPLATE VISUALS
+══════════════════════════════ */
+
+/* 1. KHMER CULTURE — Angkor Wat heritage feel */
+.v-culture {
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, #0D0805 0%, #1A0F05 40%, #0A0803 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Temple silhouette using CSS */
+.angkor-silhouette {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 50px;
+  opacity: .12;
+}
+
+.angkor-silhouette::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 14px; height: 40px;
+  background: var(--stone);
+  clip-path: polygon(20% 100%, 80% 100%, 100% 60%, 70% 30%, 50% 0%, 30% 30%, 0% 60%);
+}
+
+.angkor-silhouette::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: calc(50% - 24px);
+  width: 10px; height: 28px;
+  background: var(--stone);
+  clip-path: polygon(20% 100%, 80% 100%, 100% 55%, 70% 25%, 50% 0%, 30% 25%, 0% 55%);
+  box-shadow: 38px 0 0 var(--stone);
+}
+
+.culture-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.culture-ornament {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: .6;
+}
+
+.orn-line {
+  width: 24px; height: 1px;
+  background: var(--khmer);
+}
+
+.orn-diamond {
+  width: 5px; height: 5px;
+  background: var(--khmer);
+  transform: rotate(45deg);
+}
+
+.culture-eyebrow {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--khmer);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.culture-mid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.culture-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.culture-title em {
+  color: var(--khmer);
+  font-style: italic;
+}
+
+.culture-sub {
+  font-size: 9px;
+  color: var(--stone);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.culture-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.culture-flag {
+  display: flex;
+  height: 12px;
+  width: 36px;
+  border-radius: 2px;
+  overflow: hidden;
+  opacity: .7;
+}
+
+.flag-blue { flex: 1; background: #032EA1; }
+.flag-red { flex: 1.6; background: #E00025; }
+
+.culture-country {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--gray);
+  text-transform: uppercase;
+}
+
+/* Aurora/glow effect */
+.culture-glow {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(212,150,10,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* 2. FOOD TEMPLATE */
+.v-food {
+  width: 100%; height: 100%;
+  background: #0A0402;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.food-top {
+  flex: 1.3;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.food-bg-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1A0805 0%, #2A1008 50%, #180604 100%);
+}
+
+.food-steam {
+  position: absolute;
+  display: flex;
+  gap: 10px;
+  bottom: 10px;
+  opacity: .2;
+}
+
+.steam-line {
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to top, transparent, var(--white), transparent);
+  animation: steam 2s ease-in-out infinite;
+}
+
+@keyframes steam {
+  0% { transform: translateY(0) scaleX(1); opacity: .3; }
+  50% { transform: translateY(-12px) scaleX(1.5); opacity: .1; }
+  100% { transform: translateY(-20px) scaleX(.5); opacity: 0; }
+}
+
+.food-bowl {
+  width: 60px; height: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.food-bowl::before {
+  content: '🍲';
+  font-size: 42px;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 4px 12px rgba(232,160,32,0.3));
+}
+
+.food-spice-dots {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.spice-dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: .15;
+}
+
+.food-bottom {
+  padding: 12px 12px 14px;
+  background: linear-gradient(to top, #0A0402 80%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.food-tag {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #E86A4A;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.food-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.food-desc {
+  font-size: 9px;
+  color: var(--gray);
+  font-weight: 300;
+  letter-spacing: .5px;
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+.food-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 6px 0;
+}
+
+.food-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-time {
+  font-size: 9px;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+
+.food-difficulty {
+  display: flex;
+  gap: 2px;
+}
+
+.diff-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--khmer);
+}
+
+.diff-dot.off { background: var(--border); }
+
+/* 3. TRAVEL TEMPLATE */
+.v-travel {
+  width: 100%; height: 100%;
+  background: #04080A;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+.travel-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    #0A1520 0%,
+    #0F2035 30%,
+    #1A3050 50%,
+    #0A1520 70%,
+    #050A10 100%
+  );
+}
+
+/* Stars */
+.travel-stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: var(--white);
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%,100% { opacity: .3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Horizon glow */
+.travel-horizon {
+  position: absolute;
+  bottom: 38%;
+  left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to top, rgba(212,150,10,0.12), transparent);
+}
+
+/* Angkor tower silhouette */
+.travel-temple {
+  position: absolute;
+  bottom: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  opacity: .35;
+}
+
+.tower {
+  background: #0A0805;
+  border-radius: 1px 1px 0 0;
+}
+
+.travel-water {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 38%;
+  background: linear-gradient(180deg, #081520 0%, #050A10 100%);
+  border-top: 1px solid rgba(212,150,10,0.1);
+}
+
+/* Water reflection lines */
+.travel-water::after {
+  content: '';
+  position: absolute;
+  top: 8px; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,150,10,0.15), transparent);
+  box-shadow: 0 6px 0 rgba(212,150,10,0.08), 0 12px 0 rgba(212,150,10,0.05);
+}
+
+.travel-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 14px 14px 16px;
+  z-index: 2;
+}
+
+.travel-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.location-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: #7DC87D;
+  box-shadow: 0 0 6px rgba(125,200,125,0.5);
+}
+
+.location-name {
+  font-size: 9px;
+  color: #7DC87D;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.travel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.travel-title em { color: var(--khmer); font-style: italic; }
+
+.travel-desc {
+  font-size: 9px;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.travel-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.travel-chip {
+  padding: 2px 8px;
+  border: 1px solid rgba(125,200,125,0.3);
+  border-radius: 10px;
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #7DC87D;
+  font-weight: 700;
+}
+
+/* 4. HISTORY TEMPLATE */
+.v-history {
+  width: 100%; height: 100%;
+  background: #08060F;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.history-texture {
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 28px,
+    rgba(180,160,120,0.025) 28px, rgba(180,160,120,0.025) 29px
+  ),
+  repeating-linear-gradient(
+    90deg, transparent, transparent 28px,
+    rgba(180,160,120,0.025) 28px, rgba(180,160,120,0.025) 29px
+  );
+}
+
+.history-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, #08060F 85%);
+}
+
+.history-top {
+  padding: 14px 12px 0;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.history-era {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #B0A0E0;
+}
+
+.history-year {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gray);
+}
+
+.history-mid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  position: relative;
+  z-index: 2;
+  gap: 10px;
+}
+
+.history-icon {
+  font-size: 32px;
+  filter: grayscale(30%);
+  opacity: .8;
+}
+
+.history-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--white);
+  text-align: center;
+  line-height: 1.15;
+}
+
+.history-title em {
+  color: #B0A0E0;
+  font-style: italic;
+}
+
+.history-quote {
+  font-size: 10px;
+  color: var(--stone);
+  text-align: center;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.6;
+  padding: 0 4px;
+  border-left: 2px solid rgba(176,160,224,0.4);
+  padding-left: 10px;
+  text-align: left;
+}
+
+.history-bottom {
+  padding: 12px 12px 14px;
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--border);
+}
+
+.history-timeline {
+  display: flex;
+  gap: 0;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.timeline-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 3px;
+}
+
+.t-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  border: 1px solid var(--gray);
+}
+
+.t-dot.active {
+  background: #B0A0E0;
+  border-color: #B0A0E0;
+  box-shadow: 0 0 6px rgba(176,160,224,0.4);
+}
+
+.t-label {
+  font-size: 7px;
+  color: var(--gray);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 3px; left: 10%; right: 10%;
+  height: 1px;
+  background: var(--border);
+  z-index: -1;
+}
+
+.history-cta {
+  font-size: 9px;
+  color: var(--gray);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cta-arrow {
+  color: #B0A0E0;
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 1000;
+  display: flex; align-items: flex-end;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: #1A1408;
+  border-radius: 18px 18px 0 0;
+  border-top: 1px solid var(--border);
+  padding: 18px 18px 36px;
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+
+.modal-handle {
+  width: 36px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0 auto 14px;
+}
+
+.modal-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: var(--white);
+  margin-bottom: 3px;
+}
+
+.modal-meta { font-size: 12px; color: var(--gray); margin-bottom: 14px; }
+
+.modal-steps {
+  list-style: none;
+  counter-reset: s;
+  margin-bottom: 18px;
+}
+
+.modal-steps li {
+  counter-increment: s;
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 13px; color: #bbb; line-height: 1.6;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border);
+}
+.modal-steps li:last-child { border: none; }
+
+.modal-steps li::before {
+  content: counter(s);
+  background: var(--border); color: var(--khmer);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px; letter-spacing: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.modal-steps li b { color: var(--white); font-weight: 600; }
+
+.modal-open-btn {
+  display: block; width: 100%; padding: 14px;
+  background: var(--khmer); color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  text-align: center; border: none;
+  border-radius: 10px; cursor: pointer;
+  text-decoration: none; margin-bottom: 8px;
+}
+
+.modal-close {
+  display: block; width: 100%; padding: 12px;
+  background: none; border: 1px solid var(--border);
+  color: var(--gray); font-size: 13px; font-weight: 600;
+  border-radius: 10px; cursor: pointer;
+}
+
+/* Layer key */
+.layer-section {
+  margin-bottom: 14px;
+}
+.layer-section h4 {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--khmer);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.layer-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; color: var(--gray); padding: 3px 0;
+}
+.layer-dot {
+  width: 8px; height: 8px;
+  border-radius: 2px; flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-deco"></div>
+  <h1>Cambodia <span>Templates</span></h1>
+  <p>CapCut reference designs · Culture · Food · Travel · History</p>
+</header>
+
+<div class="filters">
+  <button class="filter-btn on" onclick="filter('all',this)">All</button>
+  <button class="filter-btn" onclick="filter('culture',this)">Culture</button>
+  <button class="filter-btn" onclick="filter('food',this)">Food</button>
+  <button class="filter-btn" onclick="filter('travel',this)">Travel</button>
+  <button class="filter-btn" onclick="filter('history',this)">History</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-meta" id="modal-meta"></div>
+
+    <div class="layer-section">
+      <h4>Layer Order (Bottom → Top)</h4>
+      <div id="modal-layers"></div>
+    </div>
+
+    <ul class="modal-steps" id="modal-steps"></ul>
+    <a class="modal-open-btn" id="modal-btn" href="https://www.capcut.com/tv2/ZP8sYNugs/" target="_blank">Use: CMG Apsara 2 in CapCut</a>
+    <button class="modal-close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+const TEMPLATES = [
+  {
+    id: 1,
+    name: "Khmer Heritage",
+    meta: "9:16 · 5–8 sec · Culture & Traditions",
+    tags: ["culture"],
+    visual: "culture",
+    layers: [
+      { color: "#0D0805", label: "Dark warm background gradient" },
+      { color: "rgba(212,150,10,0.15)", label: "Golden glow at base (radial gradient overlay)" },
+      { color: "#B8A882", label: "Angkor Wat silhouette (PNG cutout or shape layer)" },
+      { color: "#E8A020", label: "Ornamental divider lines + diamond (gold)" },
+      { color: "#fff", label: "Main title text (Playfair Display or serif font)" },
+      { color: "#E8A020", label: "Eyebrow text + country info at bottom" },
+    ],
+    steps: [
+      { b: "Background", t: "Dark warm brown/black gradient — add subtle orange glow at center bottom" },
+      { b: "Temple", t: "Find Angkor Wat silhouette PNG (free on Freepik) → opacity 15%, pin to center" },
+      { b: "Ornament", t: "Two thin lines with diamond shape between them in gold → Fade In from center, 0.5s" },
+      { b: "Eyebrow", t: '"KHMER CULTURE" small caps, gold, letterSpacing wide → appear first' },
+      { b: "Title", t: "Large serif italic title → Slide Up, 0.7s, slight glow" },
+      { b: "Flag", t: "Cambodian flag sticker (small) at bottom with country label → Fade In last" },
+      { b: "Music", t: "Use traditional Khmer music or ambient cultural soundscape" },
+    ]
+  },
+  {
+    id: 2,
+    name: "Khmer Food",
+    meta: "9:16 · 5–10 sec · Food & Recipe",
+    tags: ["food"],
+    visual: "food",
+    layers: [
+      { color: "#1A0805", label: "Deep warm background (dark red-brown)" },
+      { color: "rgba(232,106,74,0.1)", label: "Warm spice color overlay (subtle)" },
+      { color: "#888", label: "Food photo or emoji placeholder (center top)" },
+      { color: "rgba(232,160,32,0.2)", label: "Steam animation lines (white, low opacity, rising)" },
+      { color: "#E86A4A", label: '"Khmer Kitchen" or dish tag text (orange-red)' },
+      { color: "#fff", label: "Dish name title (large, serif)" },
+      { color: "#888", label: "Short description + cook time + difficulty dots" },
+    ],
+    steps: [
+      { b: "Background", t: "Deep dark warm tone — think spice market at night. Add warm radial glow center." },
+      { b: "Food photo", t: "Your food photo top 55% of frame → darken edges with vignette overlay" },
+      { b: "Steam", t: "3–4 thin white vertical lines → Keyframe Y rising upward, opacity 0.2, loop" },
+      { b: "Food tag", t: '"Khmer Kitchen" or dish category → Fade in first, small caps orange' },
+      { b: "Dish name", t: "Large title font → Slide Up from bottom, 0.6s" },
+      { b: "Details", t: "Cook time, difficulty, short description → Fade In, stagger 0.2s each" },
+      { b: "Music", t: "Upbeat Khmer traditional or lofi beat underneath" },
+    ]
+  },
+  {
+    id: 3,
+    name: "Visit Cambodia",
+    meta: "9:16 · 8–15 sec · Travel & Tourism",
+    tags: ["travel"],
+    visual: "travel",
+    layers: [
+      { color: "#0A1520", label: "Night sky gradient (deep blue-black)" },
+      { color: "#fff", label: "Star dots scattered (small white circles, twinkle animation)" },
+      { color: "#0A0805", label: "Temple/landmark silhouette at horizon line" },
+      { color: "rgba(212,150,10,0.12)", label: "Horizon warm glow (gold, low opacity)" },
+      { color: "#081520", label: "Water reflection area (lower 35%)" },
+      { color: "#7DC87D", label: "Location dot + destination name (green)" },
+      { color: "#fff", label: "Main title + description text" },
+      { color: "#7DC87D", label: "Destination tags/chips at bottom" },
+    ],
+    steps: [
+      { b: "Sky", t: "Night sky gradient — deep blue fading to near black. Add star stickers scattered." },
+      { b: "Landmark", t: "Silhouette of Angkor Wat, Bayon, or a Cambodian landmark PNG → dark, at horizon, opacity 40%" },
+      { b: "Horizon glow", t: "Gold/warm gradient strip at horizon line → opacity 12%, soft blur" },
+      { b: "Reflection", t: "Lower 35% is dark water — mirror the landmark if possible using flip effect" },
+      { b: "Location pin", t: "Green dot + 'SIEM REAP, CAMBODIA' text → Fade In, 0.4s" },
+      { b: "Title", t: "Destination title in serif italic → Slide Up, 0.7s" },
+      { b: "Tags", t: "Small pill tags: Must Visit, Temples, Sunrise → Appear last, stagger 0.1s each" },
+    ]
+  },
+  {
+    id: 4,
+    name: "Khmer Empire",
+    meta: "9:16 · 8–12 sec · History & Education",
+    tags: ["history"],
+    visual: "history",
+    layers: [
+      { color: "#08060F", label: "Very dark purple-black background" },
+      { color: "rgba(180,160,120,0.025)", label: "Subtle grid texture overlay (old manuscript feel)" },
+      { color: "rgba(0,0,0,0.6)", label: "Radial vignette (darken edges)" },
+      { color: "#B0A0E0", label: "Era label + year text (muted purple)" },
+      { color: "#888", label: "Historical icon or symbol (center)" },
+      { color: "#fff", label: "Event/topic title (serif, centered)" },
+      { color: "#B8A882", label: "Quote or fact text (stone color, italic)" },
+      { color: "#B0A0E0", label: "Timeline dots + CTA at bottom" },
+    ],
+    steps: [
+      { b: "Background", t: "Very dark, almost black with slight purple tint. Add grid lines at 3% opacity for manuscript feel." },
+      { b: "Vignette", t: "Heavy radial vignette overlay — dark edges, slightly lighter center" },
+      { b: "Era text", t: '"KHMER EMPIRE" + date range → top of screen, small, letterSpacing wide, muted purple' },
+      { b: "Icon", t: "Historical symbol, relic, or themed emoji → center, slight glow, Zoom In animation" },
+      { b: "Title", t: "Large serif centered title → Fade In from slight blur, 0.8s" },
+      { b: "Quote/fact", t: "Short historical fact in italic → Appear with typewriter effect after title" },
+      { b: "Timeline", t: "3–4 dots connected by line at bottom → each dot lights up sequentially" },
+      { b: "Music", t: "Cinematic orchestral or ambient pad. No beats — let the history breathe." },
+    ]
+  },
+];
+
+function renderVisual(v) {
+  switch(v) {
+    case 'culture': return `
+      <div class="v-culture">
+        <div class="culture-glow"></div>
+        <div class="culture-top">
+          <div class="culture-ornament">
+            <div class="orn-line"></div>
+            <div class="orn-diamond"></div>
+            <div class="orn-line"></div>
+          </div>
+          <div class="culture-eyebrow">Khmer Culture</div>
+        </div>
+        <div class="culture-mid">
+          <div class="angkor-silhouette"></div>
+          <div class="culture-title">Traditions of<br>the <em>Khmer</em></div>
+          <div class="culture-sub">Cambodia · Heritage</div>
+        </div>
+        <div class="culture-bottom">
+          <div class="culture-flag">
+            <div class="flag-blue"></div>
+            <div class="flag-red"></div>
+            <div class="flag-blue"></div>
+          </div>
+          <div class="culture-country">Kingdom of Cambodia</div>
+        </div>
+      </div>`;
+
+    case 'food': return `
+      <div class="v-food">
+        <div class="food-top">
+          <div class="food-bg-gradient"></div>
+          <div class="food-steam">
+            <div class="steam-line" style="height:18px;animation-delay:0s"></div>
+            <div class="steam-line" style="height:24px;animation-delay:.4s"></div>
+            <div class="steam-line" style="height:16px;animation-delay:.8s"></div>
+          </div>
+          <div class="food-bowl"></div>
+        </div>
+        <div class="food-bottom">
+          <div class="food-tag">Khmer Kitchen</div>
+          <div class="food-title">Amok Trey<br>Fish Curry</div>
+          <div class="food-desc">Steamed in banana leaf with coconut, kroeung paste & fresh herbs</div>
+          <div class="food-divider"></div>
+          <div class="food-meta-row">
+            <div class="food-time">⏱ 45 min</div>
+            <div class="food-difficulty">
+              <div class="diff-dot"></div>
+              <div class="diff-dot"></div>
+              <div class="diff-dot off"></div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+    case 'travel': return `
+      <div class="v-travel">
+        <div class="travel-sky"></div>
+        <div class="travel-stars">
+          ${Array.from({length:14},(_,i)=>`<div class="star" style="width:${Math.random()<.3?2:1}px;height:${Math.random()<.3?2:1}px;top:${5+Math.random()*55}%;left:${Math.random()*100}%;animation-delay:${Math.random()*3}s"></div>`).join('')}
+        </div>
+        <div class="travel-horizon"></div>
+        <div class="travel-temple">
+          <div class="tower" style="width:6px;height:18px"></div>
+          <div class="tower" style="width:8px;height:28px"></div>
+          <div class="tower" style="width:12px;height:42px"></div>
+          <div class="tower" style="width:8px;height:28px"></div>
+          <div class="tower" style="width:6px;height:18px"></div>
+        </div>
+        <div class="travel-water"></div>
+        <div class="travel-content">
+          <div class="travel-location">
+            <div class="location-dot"></div>
+            <div class="location-name">Siem Reap, Cambodia</div>
+          </div>
+          <div class="travel-title">Where the<br><em>Gods</em> Slept</div>
+          <div class="travel-desc">Angkor Wat at sunrise — a world wonder hidden in the jungle</div>
+          <div class="travel-tags">
+            <div class="travel-chip">Must Visit</div>
+            <div class="travel-chip">Temples</div>
+            <div class="travel-chip">Sunrise</div>
+          </div>
+        </div>
+      </div>`;
+
+    case 'history': return `
+      <div class="v-history">
+        <div class="history-texture"></div>
+        <div class="history-vignette"></div>
+        <div class="history-top">
+          <div class="history-era">Khmer Empire</div>
+          <div class="history-year">802 – 1431 AD</div>
+        </div>
+        <div class="history-mid">
+          <div class="history-icon">🏛️</div>
+          <div class="history-title">The <em>Golden Age</em><br>of Southeast Asia</div>
+          <div class="history-quote">At its peak, Angkor was the largest pre-industrial city in the world...</div>
+        </div>
+        <div class="history-bottom">
+          <div class="history-timeline">
+            <div class="timeline-line"></div>
+            <div class="timeline-dot"><div class="t-dot active"></div><div class="t-label">Rise</div></div>
+            <div class="timeline-dot"><div class="t-dot active"></div><div class="t-label">Peak</div></div>
+            <div class="timeline-dot"><div class="t-dot"></div><div class="t-label">Fall</div></div>
+            <div class="timeline-dot"><div class="t-dot"></div><div class="t-label">Legacy</div></div>
+          </div>
+          <div class="history-cta">
+            Swipe for more <span class="cta-arrow">↓</span>
+          </div>
+        </div>
+      </div>`;
+  }
+}
+
+function renderGrid(filterTag) {
+  const grid = document.getElementById('grid');
+  const list = filterTag === 'all' ? TEMPLATES : TEMPLATES.filter(t => t.tags.includes(filterTag));
+
+  grid.innerHTML = list.map(t => `
+    <div class="card" onclick="openModal(${t.id})">
+      <div class="card-preview">${renderVisual(t.visual)}</div>
+      <div class="card-info">
+        <div class="card-name">${t.name}</div>
+        <div class="card-meta">${t.meta}</div>
+        <div class="card-tags">
+          <span class="tag ${t.tags[0]}">${t.tags[0]}</span>
+          <span class="tag free">Free</span>
+        </div>
+      </div>
+      <button class="use-btn">Use Template</button>
+    </div>
+  `).join('');
+}
+
+function filter(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderGrid(tag);
+}
+
+function openModal(id) {
+  const t = TEMPLATES.find(x => x.id === id);
+  document.getElementById('modal-title').textContent = t.name;
+  document.getElementById('modal-meta').textContent = t.meta;
+  document.getElementById('modal-layers').innerHTML = t.layers.map(l => `
+    <div class="layer-row">
+      <div class="layer-dot" style="background:${l.color};border:1px solid rgba(255,255,255,0.1)"></div>
+      <span>${l.label}</span>
+    </div>
+  `).join('');
+  document.getElementById('modal-steps').innerHTML = t.steps.map(s =>
+    `<li><b>${s.b}:</b> ${s.t}</li>`
+  ).join('');
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modal') || e.target.classList.contains('modal-close')) {
+    document.getElementById('modal').classList.remove('open');
+  }
+}
+
+renderGrid('all');
+</script>
+</body>
+</html>
