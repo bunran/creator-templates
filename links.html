@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Creator Templates</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg: #0C0C0C;
+  --card: #161616;
+  --border: #242424;
+  --white: #F2F2F2;
+  --gray: #888;
+  --light: #555;
+  --accent: #E8C84A;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: #0A0A0A;
+}
+
+.site-nav a {
+  flex: 1;
+  padding: 12px 8px;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gray);
+  border-bottom: 2px solid transparent;
+  transition: all .2s;
+}
+
+.site-nav a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.site-nav a:not(.active):hover {
+  color: var(--white);
+}
+
+/* ── HEADER ── */
+header {
+  padding: 24px 20px 18px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 6px;
+  color: var(--white);
+}
+
+header p {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 6px;
+  font-weight: 300;
+  letter-spacing: .5px;
+}
+
+/* ── FILTER TABS ── */
+.filters {
+  display: flex;
+  gap: 8px;
+  padding: 16px 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--border);
+}
+.filters::-webkit-scrollbar { display: none; }
+
+.filter-btn {
+  padding: 7px 16px;
+  border: 1px solid var(--border);
+  background: none;
+  color: var(--gray);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all .2s;
+  flex-shrink: 0;
+}
+
+.filter-btn.on {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+/* ── GRID ── */
+.grid {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ── TEMPLATE CARD ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform .15s, border-color .15s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.card:active { transform: scale(0.97); }
+.card.featured { grid-column: span 2; }
+
+.card-preview {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #111;
+  flex-shrink: 0;
+}
+
+/* 9:16 previews */
+.ratio-916 { aspect-ratio: 9/16; }
+/* 16:9 previews */
+.ratio-169 { aspect-ratio: 16/9; }
+/* 1:1 previews */
+.ratio-11 { aspect-ratio: 1/1; }
+
+/* Featured card preview height override */
+.card.featured .card-preview { aspect-ratio: 16/7; }
+
+.card-info {
+  padding: 12px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.card-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: .3px;
+}
+
+.card-meta {
+  font-size: 11px;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.card-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: var(--border);
+  color: var(--gray);
+}
+
+.tag.music { background: rgba(232,200,74,0.12); color: var(--accent); }
+.tag.free { background: rgba(100,220,100,0.12); color: #6DDC6D; }
+.tag.new { background: rgba(100,150,255,0.12); color: #7EB0FF; }
+
+.use-btn {
+  margin: 0 12px 12px;
+  padding: 10px;
+  background: var(--accent);
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: calc(100% - 24px);
+  text-align: center;
+  transition: opacity .15s;
+  text-decoration: none;
+  display: block;
+}
+
+.use-btn:active { opacity: .8; }
+.use-btn.ghost {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--gray);
+}
+
+/* ── TEMPLATE VISUALS ── */
+
+/* 1. Minimal Intro */
+.v-intro {
+  width: 100%; height: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.v-intro-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(232,200,74,0.2);
+  width: 70%; aspect-ratio: 1;
+  animation: rpulse 3s ease-in-out infinite;
+}
+@keyframes rpulse { 0%,100%{transform:scale(1);opacity:.5} 50%{transform:scale(1.08);opacity:1} }
+.v-intro-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 6px;
+  color: #fff;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.v-intro-sub {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  position: relative;
+  z-index: 2;
+}
+
+/* 2. Lyric card */
+.v-lyric {
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, #120810 0%, #050305 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px 12px;
+  position: relative;
+  overflow: hidden;
+}
+.v-lyric-blur {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+}
+.v-lyric-bars {
+  position: absolute;
+  top: 30%;
+  left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  opacity: .25;
+}
+.vb { width: 2px; background: var(--accent); border-radius: 2px; animation: wave 1s ease-in-out infinite; }
+@keyframes wave { 0%,100%{transform:scaleY(.3)} 50%{transform:scaleY(1)} }
+.v-lyric-text {
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.3;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 4px;
+}
+.v-lyric-next {
+  font-size: 9px;
+  color: rgba(255,255,255,0.35);
+  position: relative;
+  z-index: 2;
+}
+.v-lyric-bar {
+  margin-top: 8px;
+  height: 1.5px;
+  background: #333;
+  position: relative;
+  z-index: 2;
+  border-radius: 1px;
+  overflow: hidden;
+}
+.v-lyric-bar-fill {
+  height: 100%;
+  width: 55%;
+  background: linear-gradient(90deg, var(--accent), #C0392B);
+}
+
+/* 3. Album announce */
+.v-announce {
+  width: 100%; height: 100%;
+  background: #080808;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.v-announce-top {
+  flex: 1.2;
+  background: linear-gradient(135deg, #180808 0%, #280A0A 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.v-announce-stripe {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+}
+.v-announce-cover {
+  width: 50px; height: 50px;
+  background: rgba(232,200,74,0.08);
+  border: 1px dashed rgba(232,200,74,0.25);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.v-announce-bottom {
+  padding: 10px 10px 10px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.v-announce-tag { font-size: 8px; letter-spacing: 3px; color: #C0392B; text-transform: uppercase; font-weight: 700; }
+.v-announce-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; color: #fff; }
+.v-announce-artist { font-size: 9px; letter-spacing: 2px; color: var(--accent); font-weight: 600; text-transform: uppercase; }
+
+/* 4. Outro */
+.v-outro {
+  width: 100%; height: 100%;
+  background: #050505;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.v-outro-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(0,212,200,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,200,0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.v-outro-vignette { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 30%, #050505 80%); }
+.v-outro-icon {
+  width: 36px; height: 36px;
+  border: 1.5px solid #00D4C8;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  color: #00D4C8;
+  position: relative; z-index: 2;
+  box-shadow: 0 0 16px rgba(0,212,200,0.25);
+}
+.v-outro-cta {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px; letter-spacing: 3px;
+  color: #fff; text-align: center;
+  position: relative; z-index: 2;
+}
+.v-outro-cta span { color: #00D4C8; }
+.v-outro-handle { font-size: 9px; color: var(--gray); letter-spacing: 2px; position: relative; z-index: 2; }
+
+/* 5. YouTube card */
+.v-youtube {
+  width: 100%; height: 100%;
+  background: #111;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.v-yt-stripe { width: 3px; height: 100%; background: #B8FF57; flex-shrink: 0; }
+.v-yt-content { padding: 14px 12px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+.v-yt-tag { font-size: 8px; letter-spacing: 2px; color: #B8FF57; text-transform: uppercase; font-weight: 700; }
+.v-yt-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; color: #fff; line-height: 1; }
+.v-yt-title em { color: #B8FF57; font-style: normal; }
+.v-yt-handle { font-size: 9px; color: var(--gray); letter-spacing: 1px; }
+.v-yt-photo { width: 45%; height: 100%; background: rgba(184,255,87,0.04); border-left: 1px dashed rgba(184,255,87,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.v-yt-photo span { font-size: 8px; color: var(--light); letter-spacing: 1px; text-transform: uppercase; }
+
+/* 6. TikTok hook */
+.v-hook {
+  width: 100%; height: 100%;
+  background: #000;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.v-hook-gradient { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.8) 100%); }
+.v-hook-eyebrow { font-size: 8px; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 8px; position: relative; z-index: 2; }
+.v-hook-text {
+  font-size: 14px; font-style: italic; font-weight: 700;
+  color: #fff; text-align: center; line-height: 1.25;
+  position: relative; z-index: 2;
+}
+.v-hook-text em { color: var(--accent); font-style: italic; }
+.v-hook-arrow {
+  position: absolute; bottom: 14px;
+  font-size: 14px; color: var(--accent);
+  animation: bounce 1.4s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(5px)} }
+
+/* 7. Featured — Split intro (wide) */
+.v-featured {
+  width: 100%; height: 100%;
+  background: linear-gradient(100deg, #080010 0%, #100820 60%, #050508 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: relative;
+  overflow: hidden;
+}
+.v-featured-rings {
+  position: absolute;
+  right: -60px; top: 50%;
+  transform: translateY(-50%);
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 1px solid rgba(232,200,74,0.12);
+}
+.v-featured-rings::after {
+  content: '';
+  position: absolute; inset: 25px;
+  border-radius: 50%;
+  border: 1px solid rgba(232,200,74,0.08);
+}
+.v-featured-left { display: flex; flex-direction: column; gap: 6px; z-index: 2; }
+.v-featured-tag { font-size: 10px; letter-spacing: 4px; color: var(--accent); text-transform: uppercase; font-weight: 700; }
+.v-featured-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px; letter-spacing: 3px; color: #fff; line-height: 1;
+}
+.v-featured-sub { font-size: 11px; color: var(--gray); font-weight: 300; letter-spacing: 1px; }
+.v-featured-right {
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-end; z-index: 2;
+}
+.v-featured-pill {
+  padding: 5px 12px; border: 1px solid rgba(232,200,74,0.3);
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; border-radius: 20px;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  padding: 20px 16px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+/* ── EMPTY STATE ── */
+.empty {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--gray);
+  font-size: 14px;
+  grid-column: span 2;
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  display: flex; align-items: flex-end;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+
+.modal {
+  background: #1A1A1A;
+  border-radius: 18px 18px 0 0;
+  padding: 20px 20px 36px;
+  width: 100%;
+  transform: translateY(100%);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+
+.modal-handle {
+  width: 36px; height: 4px;
+  background: #333;
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+.modal-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 3px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.modal-meta { font-size: 12px; color: var(--gray); margin-bottom: 16px; }
+
+.modal-steps {
+  list-style: none;
+  counter-reset: s;
+  margin-bottom: 20px;
+}
+.modal-steps li {
+  counter-increment: s;
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 13px; color: #bbb; line-height: 1.6;
+  padding: 5px 0;
+  border-bottom: 1px solid #222;
+}
+.modal-steps li:last-child { border: none; }
+.modal-steps li::before {
+  content: counter(s);
+  background: #222; color: var(--accent);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px; letter-spacing: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+.modal-steps li b { color: var(--white); font-weight: 600; }
+
+.modal-open-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: var(--accent);
+  color: #000;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.modal-close {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: 1px solid #333;
+  color: var(--gray);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="active">🎵 Music & Creator</a>
+  <a href="cambodia.html">🇰🇭 Cambodia</a>
+</nav>
+
+<header>
+  <h1>Creator Templates</h1>
+  <p>Free CapCut templates for music & content creators</p>
+</header>
+
+<div class="filters">
+  <button class="filter-btn on" onclick="filter('all',this)">All</button>
+  <button class="filter-btn" onclick="filter('music',this)">Music</button>
+  <button class="filter-btn" onclick="filter('creator',this)">Creator</button>
+  <button class="filter-btn" onclick="filter('tiktok',this)">TikTok</button>
+  <button class="filter-btn" onclick="filter('youtube',this)">YouTube</button>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="modal-title"></div>
+    <div class="modal-meta" id="modal-meta"></div>
+    <ul class="modal-steps" id="modal-steps"></ul>
+    <a class="modal-open-btn" id="modal-btn" href="#" target="_blank">Open in CapCut</a>
+    <button class="modal-close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<script>
+const TEMPLATES = [
+  {
+    id: 1,
+    name: "Artist Intro",
+    meta: "9:16 · 3–5 sec · TikTok / Reels",
+    tags: ["music", "tiktok"],
+    ratio: "ratio-916",
+    visual: "intro",
+    capcut: "https://www.capcut.com/template",
+    steps: [
+      { b: "Background", t: "Add black clip → overlay a gradient sticker (purple/dark)" },
+      { b: "Rings", t: "Add circle shape, stroke only → Keyframe scale 0.8→1.1, opacity fade in/out over 3s" },
+      { b: "Artist Name", t: "Large text, bold font → Animation: Slide Up, 0.8s" },
+      { b: "Subtitle", t: "Small spaced text in gold/yellow → Fade In, delay 0.4s after name" },
+      { b: "Scan line", t: "Thin white 1px line sticker → Keyframe Y top to bottom, opacity 30%" },
+    ]
+  },
+  {
+    id: 2,
+    name: "Lyric Overlay",
+    meta: "9:16 · Full song · TikTok / Reels",
+    tags: ["music", "tiktok"],
+    ratio: "ratio-916",
+    visual: "lyric",
+    capcut: "https://www.capcut.com/template",
+    steps: [
+      { b: "Base", t: "Your music video clip or aesthetic photo as background" },
+      { b: "Gradient", t: "Black overlay on bottom 50% → opacity 70%" },
+      { b: "Active lyric", t: "Large italic text in gold → Fade In/Out per line, sync to beat" },
+      { b: "Next lyric", t: "Smaller text, 40% opacity below → appear 0.3s before current line ends" },
+      { b: "Progress bar", t: "Thin rectangle → Keyframe width 0%→100% synced to full song length" },
+    ]
+  },
+  {
+    id: 3,
+    name: "Album Announce",
+    meta: "9:16 · 5–8 sec · Release Day",
+    tags: ["music", "tiktok"],
+    ratio: "ratio-916",
+    visual: "announce",
+    capcut: "https://www.capcut.com/template",
+    steps: [
+      { b: "Split layout", t: "Top 55% = album cover art with dark overlay on top" },
+      { b: "Accent stripe", t: "Thin vertical rectangle, gold, pinned to left edge full height" },
+      { b: "Tag", t: '"NEW RELEASE" small caps in red → Slide in from left, 0.4s' },
+      { b: "Album title", t: "Large display font → Slide up from below, 0.6s" },
+      { b: "Date", t: "Small info row at bottom → Fade in last, 1.2s" },
+    ]
+  },
+  {
+    id: 4,
+    name: "Artist Outro",
+    meta: "9:16 · 4–6 sec · End Screen",
+    tags: ["music", "tiktok"],
+    ratio: "ratio-916",
+    visual: "outro",
+    capcut: "https://www.capcut.com/template",
+    steps: [
+      { b: "Background", t: "Black clip → Add grid/mesh sticker overlay at 15% opacity" },
+      { b: "Play icon", t: "Circle sticker stroke only in teal → Zoom In animation" },
+      { b: "CTA text", t: '"Follow For More Music" large bold → Typewriter or Fade In' },
+      { b: "Handle", t: "Smaller @handle text in gray → Fade In 0.3s delay" },
+      { b: "Platform pills", t: "3 text boxes side by side with border sticker behind each" },
+    ]
+  },
+  {
+    id: 5,
+    name: "TikTok Hook",
+    meta: "9:16 · 2–3 sec · First Frame",
+    tags: ["creator", "tiktok"],
+    ratio: "ratio-916",
+    visual: "hook",
+    capcut: "https://www.capcut.com/template",
+    steps: [
+      { b: "Background", t: "Black or dark video clip — your face or aesthetic footage" },
+      { b: "Eyebrow", t: '"STOP SCROLLING" or hook phrase in gold small caps — appear at frame 1, no delay' },
+      { b: "Hook text", t: "Large italic quote — appear instantly, no animation. Grab attention fast." },
+      { b: "Arrow", t: "↓ arrow at bottom → Bounce keyframe loop (Y: 0 → 6px)" },
+      { b: "Rule", t: "NO long intros. Hook must hit within first 0.5 seconds" },
+    ]
+  },
+  {
+    id: 6,
+    name: "YouTube Intro Card",
+    meta: "16:9 · 3–4 sec · Channel Branding",
+    tags: ["creator", "youtube"],
+    ratio: "ratio-169",
+    visual: "youtube",
+    capcut: "https://www.capcut.com/template",
+    steps: [
+      { b: "Background", t: "Dark clip → Add your channel color as left edge stripe (3–5px rectangle)" },
+      { b: "Your photo", t: "Right 45% of frame, use CapCut Remove BG on your photo" },
+      { b: "Episode tag", t: "Small text top-left in your accent color → Fade In" },
+      { b: "Main title", t: "Big bold text, highlight keyword in accent color → Slide Up" },
+      { b: "Channel handle", t: "Bottom left, small, gray → Fade In last" },
+    ]
+  },
+];
+
+function renderVisual(v) {
+  switch(v) {
+    case 'intro': return `
+      <div class="v-intro">
+        <div class="v-intro-ring"></div>
+        <div class="v-intro-name">ARTIST<br>NAME</div>
+        <div class="v-intro-sub">Your Channel</div>
+      </div>`;
+    case 'lyric': return `
+      <div class="v-lyric">
+        <div class="v-lyric-blur"></div>
+        <div class="v-lyric-bars">
+          ${[10,20,14,28,18,24,12,22,16].map((h,i)=>`<div class="vb" style="height:${h}px;animation-delay:${i*.12}s"></div>`).join('')}
+        </div>
+        <div class="v-lyric-text">"Your lyric line goes here"</div>
+        <div class="v-lyric-next">next line appears softly...</div>
+        <div class="v-lyric-bar"><div class="v-lyric-bar-fill"></div></div>
+      </div>`;
+    case 'announce': return `
+      <div class="v-announce">
+        <div class="v-announce-top">
+          <div class="v-announce-stripe"></div>
+          <div class="v-announce-cover"><span>🎵</span></div>
+        </div>
+        <div class="v-announce-bottom">
+          <div class="v-announce-tag">New Release</div>
+          <div class="v-announce-title">Album Title</div>
+          <div class="v-announce-artist">Artist Name</div>
+        </div>
+      </div>`;
+    case 'outro': return `
+      <div class="v-outro">
+        <div class="v-outro-grid"></div>
+        <div class="v-outro-vignette"></div>
+        <div class="v-outro-icon">▶</div>
+        <div class="v-outro-cta">Follow For<br><span>More</span></div>
+        <div class="v-outro-handle">@yourhandle</div>
+      </div>`;
+    case 'hook': return `
+      <div class="v-hook">
+        <div class="v-hook-gradient"></div>
+        <div class="v-hook-eyebrow">Stop Scrolling</div>
+        <div class="v-hook-text">"<em>Nobody tells you</em> this about blowing up as a creator..."</div>
+        <div class="v-hook-arrow">↓</div>
+      </div>`;
+    case 'youtube': return `
+      <div class="v-youtube">
+        <div class="v-yt-stripe"></div>
+        <div class="v-yt-content">
+          <div class="v-yt-tag">Episode 1 · Vlog</div>
+          <div class="v-yt-title">This Changed<br><em>Everything</em></div>
+          <div class="v-yt-handle">@yourchannel</div>
+        </div>
+        <div class="v-yt-photo"><span>Your Photo</span></div>
+      </div>`;
+  }
+}
+
+function renderGrid(filterTag) {
+  const grid = document.getElementById('grid');
+  const filtered = filterTag === 'all' ? TEMPLATES : TEMPLATES.filter(t => t.tags.includes(filterTag));
+
+  if (!filtered.length) {
+    grid.innerHTML = '<div class="empty">No templates found</div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(t => `
+    <div class="card ${t.ratio === 'ratio-169' ? '' : ''}" onclick="openModal(${t.id})">
+      <div class="card-preview ${t.ratio}">
+        ${renderVisual(t.visual)}
+      </div>
+      <div class="card-info">
+        <div class="card-name">${t.name}</div>
+        <div class="card-meta">${t.meta}</div>
+        <div class="card-tags">
+          ${t.tags.map(tag => `<span class="tag ${tag === 'music' ? 'music' : ''}">${tag}</span>`).join('')}
+          <span class="tag free">Free</span>
+        </div>
+      </div>
+      <button class="use-btn">Use Template</button>
+    </div>
+  `).join('');
+}
+
+function filter(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderGrid(tag);
+}
+
+function openModal(id) {
+  const t = TEMPLATES.find(x => x.id === id);
+  document.getElementById('modal-title').textContent = t.name;
+  document.getElementById('modal-meta').textContent = t.meta;
+  document.getElementById('modal-steps').innerHTML = t.steps.map(s =>
+    `<li><b>${s.b}:</b> ${s.t}</li>`
+  ).join('');
+  document.getElementById('modal-btn').href = t.capcut;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modal') || e.target.classList.contains('modal-close')) {
+    document.getElementById('modal').classList.remove('open');
+  }
+}
+
+renderGrid('all');
+</script>
+</body>
+</html>
